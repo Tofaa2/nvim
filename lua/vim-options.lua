@@ -1,13 +1,19 @@
--- Navigate vim panes better
-vim.keymap.set('n', '<c-k>', ':wincmd k<CR>')
-vim.keymap.set('n', '<c-j>', ':wincmd j<CR>')
-vim.keymap.set('n', '<c-h>', ':wincmd h<CR>')
-vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
+vim.cmd("set expandtab")
+vim.cmd("set tabstop=2")
+vim.cmd("set softtabstop=2")
+vim.cmd("set shiftwidth=2")
 
-vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
-vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
-vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
-vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+
+-- Navigate vim panes better
+vim.keymap.set('n', '<c-k>', ':wincmd k<CR>', { desc = "Move to the up window" })
+vim.keymap.set('n', '<c-j>', ':wincmd j<CR>', { desc = "Move to the down window" })
+vim.keymap.set('n', '<c-h>', ':wincmd h<CR>', { desc = "Move to the left window" })
+vim.keymap.set('n', '<c-l>', ':wincmd l<CR>', { desc = "Move to the right window" })
+
+--vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+--vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+--vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+--vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 vim.wo.number = true
