@@ -13,5 +13,10 @@ vim.keymap.set('n', '<c-j>', ':wincmd j<CR>')
 vim.keymap.set('n', '<c-h>', ':wincmd h<CR>')
 vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
 
+vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
-vim.wo.number = true 
+vim.wo.number = true

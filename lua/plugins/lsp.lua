@@ -32,6 +32,12 @@ return {
       vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
       vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, {})
       vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {})
+
+
+      vim.keymap.set('n', '<leader>th', function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled)
+        
+      end, {})
     end
   }
 }
