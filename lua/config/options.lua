@@ -3,6 +3,8 @@ vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
 
 vim.opt.inccommand = "split"
+vim.opt.wrap = false
+
 vim.o.number = true
 vim.o.mouse = "a"
 vim.o.showmode = false
