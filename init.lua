@@ -10,6 +10,8 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.softtabstop = 4
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -37,6 +39,8 @@ vim.pack.add({
     { src = "https://github.com/catppuccin/nvim" },
     { src = "https://github.com/nvim-tree/nvim-tree.lua"},
 })
+
+-- Plugin Setup --
 require("nvim-tree").setup({
         -- NvimTree configuration
     sort = {
@@ -210,19 +214,30 @@ end
 vim.api.nvim_create_user_command('EditConfig', function()
   local config_path
   
-  -- Detect OS and set appropriate config path
   if vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1 then
-    -- Windows path
     config_path = vim.fn.expand('~/AppData/Local/nvim/init.lua')
   else
-    -- Unix-like systems (Linux, macOS, etc.)
     config_path = vim.fn.expand('~/.config/nvim/init.lua')
   end
-  
-  -- Open the config file
   vim.cmd('edit ' .. vim.fn.fnameescape(config_path))
 end, {
   desc = 'Open init.lua configuration file'
 })
 
+
+-- Search keybindings
+-- Search in current buffer
+vim.keymap.set('n', '<leader>s', '/', { desc = 'Search in buffer' })
+
+-- Search and replace in current buffer (prompts for pattern and replacement)
+vim.keymap.set('n', '<leader>r', ':%s/', { desc = 'Search and replace in buffer' })
+
+-- Search and replace word under cursor in entire buffer
+vim.keymap.set('n', '<leader>rw', ':%s/<C-r><C-w>/', { desc = 'Replace word under cursor' })
+
+-- Search and replace word under cursor in visual selection
+vim.keymap.set('v', '<leader>r', ':s/', { desc = 'Search and replace in selection' })
+
+-- Search and replace with confirmation (adds /gc flags)
+vim.keymap.set('n', '<leader>rc', ':%s//gc<Left><Left><Left>', { desc = 'Search and replace with confirmation' })
 
