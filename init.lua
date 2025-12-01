@@ -205,3 +205,24 @@ vim.api.nvim_create_user_command("Format", function()
     vim.lsp.buf.format({})
 end
 , {})
+
+
+vim.api.nvim_create_user_command('EditConfig', function()
+  local config_path
+  
+  -- Detect OS and set appropriate config path
+  if vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1 then
+    -- Windows path
+    config_path = vim.fn.expand('~/AppData/Local/nvim/init.lua')
+  else
+    -- Unix-like systems (Linux, macOS, etc.)
+    config_path = vim.fn.expand('~/.config/nvim/init.lua')
+  end
+  
+  -- Open the config file
+  vim.cmd('edit ' .. vim.fn.fnameescape(config_path))
+end, {
+  desc = 'Open init.lua configuration file'
+})
+
+
